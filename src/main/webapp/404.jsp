@@ -18,7 +18,7 @@ img {
 <h1><center>404Error</center></h1>
 <div class="img-container">
        
-     <center><img src="images.png" alt="Not Found Image" class="img-fluid"></center>  
+     <center><img src="imageFolder/images.png" alt="Not Found Image" class="img-fluid"></center>  
       
        
         

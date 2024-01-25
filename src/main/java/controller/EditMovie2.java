@@ -44,19 +44,19 @@ public class EditMovie2 extends HttpServlet{
 		movie.setMovie_genre(moviegenre);
 		
 		movie.setMovie_language(movielanguage);
-if (imagepart.getInputStream().readAllBytes().length>0) {
+       if (imagepart.getInputStream().readAllBytes().length>0) {
 	
 		movie.setMovie_image(imagepart.getInputStream().readAllBytes());
-}
-else
-{
-	Dao d= new Dao();
-	Movie m;
-	try {
+       }
+       else
+       {
+    	   Dao d= new Dao();
+    	   Movie m;
+    	try {
 		m = d.findMovie(movieid);
 		byte[] imgpart=m.getMovie_image();
 		movie.setMovie_image(imgpart);
-	} catch (ClassNotFoundException | SQLException e) {
+    	} catch (ClassNotFoundException | SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}

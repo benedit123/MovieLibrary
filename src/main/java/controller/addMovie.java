@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import dao.Dao;
@@ -21,6 +22,7 @@ public class addMovie extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		int movieid=Integer.parseInt(req.getParameter("movie_id"));
 		String moviename=req.getParameter("movie_name");
 		double movieprize=Double.parseDouble(req.getParameter("movie_price"));
@@ -40,11 +42,21 @@ public class addMovie extends HttpServlet{
 			
 		Dao dao=new Dao();
 		try {
+			HttpSession session=req.getSession();
+			String s1=(String) session.getAttribute("adminname");
+			if (s1!=null) {
 			dao.saveMovie(movie);
 			req.setAttribute("movies", dao.getAllmovies());
 			RequestDispatcher rs=req.getRequestDispatcher("Admin_Home.jsp");
 //			System.out.println(dao.saveMovie(movie));
 			rs.include(req, resp);
+			}
+			else 
+			{
+				req.setAttribute("message", "access denied you must do login");
+				RequestDispatcher rd= req.getRequestDispatcher("admin_login.jsp");
+				rd.include(req, resp);
+			}
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -55,5 +55,7 @@
 
 
 <a href="add_movie.jsp" >add_movie</a>
+<br>
+<a href="logout">LogOut</a>
 </body>
 </html>

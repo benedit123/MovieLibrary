@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 //import com.mysql.cj.x.protobuf.MysqlxCrud.Find;
 
@@ -25,6 +26,9 @@ public class adminLogin extends HttpServlet{
 		Dao dao= new Dao();
 		try {
 			Admin admin=dao.findByEmail(admin_mailid);
+			HttpSession session=req.getSession();
+			session.setAttribute("adminname", admin.getAdminname());
+			
 			
 //			System.out.println(admin);
 			if (admin!=null&&admin.getAdminpassword()!=null) {
