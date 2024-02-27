@@ -22,7 +22,7 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <div class="overlay-content">
                 <a href="admin.jsp">Admin</a>
-                <a href="user.jsp">User</a>
+                <a href="userSignin.jsp">User</a>
 
             </div>
         </div>
@@ -31,7 +31,7 @@
         <div class="dot"></div>
         <!-- <img id="image1" src="../components/images (6).png" alt=""> -->
         <h3 id="heading">.master</h3>
-        <a id="user" href="user.jsp"><b>UserPage</b></a>
+        <a id="user" href="userSignin.jsp"><b>UserPage</b></a>
         <a id="admin" href="admin.jsp"><b>AdminPage</b></a>
     </header>
     <div>
@@ -227,7 +227,7 @@
                     <br>
                     <h1 id="tag">Start watching the latest movies any time, anywhere</h1>
                     <br><br>
-                    <a id="getStart" href="user.jsp">GET STARTED</a>
+                    <a id="getStart" href="userSignin.jsp">GET STARTED</a>
                 </center>
             </div>
             <footer>

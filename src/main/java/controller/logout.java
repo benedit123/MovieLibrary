@@ -15,7 +15,8 @@ public class logout extends HttpServlet {
 protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	HttpSession session=req.getSession();
 	session.invalidate();
-	RequestDispatcher rd=req.getRequestDispatcher("admin_login.jsp");
+	RequestDispatcher rd=req.getRequestDispatcher("index.jsp");
 	rd.include(req, resp);
 }
+
 }

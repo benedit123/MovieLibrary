@@ -13,6 +13,7 @@ import javax.sql.rowset.serial.SerialBlob;
 
 import dto.Admin;
 import dto.Movie;
+import dto.User;
 
 
 
@@ -41,6 +42,18 @@ public class Dao {
 		pst.setString(5, admin.getAdminpassword());
 		return pst.executeUpdate();
 	}
+//	user saving
+	public int saveUser(User user) throws ClassNotFoundException, SQLException
+	{
+		Connection conn=getconnection();
+		PreparedStatement pst = conn.prepareStatement("insert into user values(?,?,?,?,?)");
+		pst.setInt(1, user.getUserID());
+		pst.setString(2,user.getUserName());
+		pst.setString(3,user.getUserEmail());
+		pst.setString(4,user.getUserPass());
+		pst.setLong(5,user.getPhoneNumber());
+		return pst.executeUpdate();
+	}
 	
 	public Admin findByEmail(String admin_mailid) throws ClassNotFoundException, SQLException {
          Connection conn = getconnection();
@@ -58,6 +71,24 @@ public class Dao {
 		}
 
 		return a;
+		
+	}
+	public User findByUserEmail(String userEmail) throws ClassNotFoundException, SQLException {
+        Connection conn = getconnection();
+		
+		PreparedStatement pst = conn.prepareStatement("select*from user where userEmail=?");
+		pst.setString(1, userEmail);
+		ResultSet rs=pst.executeQuery();
+		User u= new User();
+		if (rs.next()) {
+			u.setUserID(rs.getInt(1));
+			u.setUserName(rs.getString(2));
+			u.setUserEmail(rs.getString(3));;
+			u.setUserPass(rs.getString(4));
+			u.setPhoneNumber(rs.getLong(5));
+		}
+
+		return u;
 		
 	}
 	
